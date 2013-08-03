@@ -82,11 +82,9 @@ process.stdin.on("data", function (input) {
             alpha = 'abcdefghijklmnopqrstuvwxyz';
             for (i=0; i<alpha.length; i++) {
                 patt = new RegExp(alpha[i], 'gi');
-                try { A = a.match(patt).length; }
-                catch (e) { A = 0; }
-                try { B = b.match(patt).length; }
-                catch (e) { B = 0; }
-                count += (Math.abs(A - B)/2);
+                a.match(patt) ? A = a.match(patt).length : A = 0;
+                b.match(patt) ? B = b.match(patt).length : B = 0;
+                count += Math.abs(A - B)/2;
             }
             console.log(count);
         }
